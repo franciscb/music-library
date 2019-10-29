@@ -3,10 +3,23 @@ def age_to_int(num):
     return int(num)
 
 def time_to_int(time):
-    hour_list = time.split(':')
-    h = int(hour_list[0])
-    m = int(hour_list[1])
-    s = int(hour_list[2])
+    if time.count(':') == 2:
+        hour_list = time.split(':')
+        h = int(hour_list[0])
+        m = int(hour_list[1])
+        s = int(hour_list[2])
+
+        ms_time = (h * 3600) + (m*60) + s
+
+        return ms_time
+
+    elif  time.count(':') == 1:
+        hour_list = time.split(':')
+        m = int(hour_list[0])
+        s = int(hour_list[1])
+
+        ms_time = (m*60) + s
+        return ms_time
 
 
 def readList():
@@ -32,6 +45,8 @@ def readList():
     print (sort(artistsDict, "albumG"))  
     print (sort(artistsDict, "ageO"))
     print (sort(artistsDict, "ageY"))
+    print(sort(artistsDict, "albumL"))
+    print(sort(artistsDict, "albumS"))
 
 
 def sort(lst,parameter=""):
@@ -89,10 +104,53 @@ def sort(lst,parameter=""):
 
 
     if parameter == "albumL":
-        print("shitzu")
-
+        key_initial = list(lst.keys())
+        key_initial = key_initial[0]
+        timespan = time_to_int(lst[key_initial][3])
+        i = 3
+        for key in lst.keys():
+            while i < len(lst[key]):
+                time_check = time_to_int(lst[key][i])
+                if timespan < time_check:
+                    timespan = time_check
+                    time_str = lst[key][i]
+                i += 4
+            i = 3 
+        i=3    
+        print("Longest album(s):")
+        for key in lst.keys():
+            while i < len(lst[key]):
+                if lst[key][i] == time_str:
+                    print("{} by {} at {}.".format(lst[key][i-3], key, time_str))
+                i += 4 
+            i = 3        
+        return ""           
+        
+    
+    
     if parameter == "albumS":
-        print("Sort by small lenght") 
+        key_initial = list(lst.keys())
+        key_initial = key_initial[0]
+        timespan = time_to_int(lst[key_initial][3])
+        i = 3
+        for key in lst.keys():
+            while i < len(lst[key]):
+                time_check = time_to_int(lst[key][i])
+                if timespan > time_check:
+                    timespan = time_check
+                    time_str = lst[key][i]
+                i += 4
+            i = 3 
+        i=3    
+        print("Shortest album(s):")
+        for key in lst.keys():
+            while i < len(lst[key]):
+                if lst[key][i] == time_str:
+                    print("{} by {} at {}.".format(lst[key][i-3], key, time_str))
+                i += 4 
+            i = 3        
+        return ""    
+
 
     if parameter == "albumC":
         print("Number of albums ")
@@ -126,6 +184,6 @@ def sort(lst,parameter=""):
             print("Genre {} contains {} albums in database.".format(upper_key,val))
             print("-----------------------------------------------------------")
     return ""        
-
+print(int("00"))
 readList()        
 
