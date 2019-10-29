@@ -1,4 +1,12 @@
 
+def age_to_int(num):
+    return int(num)
+
+def time_to_int(time):
+    hour_list = time.split(':')
+    h = int(hour_list[0])
+    m = int(hour_list[1])
+    s = int(hour_list[2])
 
 
 def readList():
@@ -22,20 +30,66 @@ def readList():
 
     print(sort(artistsDict,"albumC"))  
     print (sort(artistsDict, "albumG"))  
+    print (sort(artistsDict, "ageO"))
+    print (sort(artistsDict, "ageY"))
+
 
 def sort(lst,parameter=""):
 
     genre_album = {}
-    if parameter == "ageY":
-        print("Sort by young age")
+
+    
 
 
     if parameter == "ageO":
-        print("Sort by old age") 
+        key_initial = list(lst.keys())
+        key_initial = key_initial[0]
+        year = age_to_int(lst[key_initial][1])
+        i = 1
+        for key in lst.keys():
+            while i < len(lst[key]):
+                year_check = age_to_int(lst[key][i])
+                if year > year_check:
+                    year = year_check
+                i += 4
+            i = 1 
+        year = str(year)
+        i = 1
+        print("Oldest album(s):")
+        for key in lst.keys():
+            while i < len(lst[key]):
+                if lst[key][i] == year:
+                    print("{} by {} released in {}.".format(lst[key][i-1], key, year))
+                i += 4 
+            i = 1        
+        return ""            
+
+    if parameter == "ageY":
+        key_initial = list(lst.keys())
+        key_initial = key_initial[0]
+        year = age_to_int(lst[key_initial][1])
+        i = 1
+        for key in lst.keys():
+            while i < len(lst[key]):
+                year_check = age_to_int(lst[key][i])
+                if year < year_check:
+                    year = year_check
+                i += 4
+            i = 1 
+        year = str(year)
+        i = 1
+        print("Newest album(s):")
+        for key in lst.keys():
+            while i < len(lst[key]):
+                if lst[key][i] == year:
+                    print("{} by {} released in {}.".format(lst[key][i-1], key, year))
+                i += 4 
+            i = 1        
+        return ""            
 
 
     if parameter == "albumL":
-         print("Sort by short lenght")
+        print("shitzu")
 
     if parameter == "albumS":
         print("Sort by small lenght") 
@@ -71,7 +125,7 @@ def sort(lst,parameter=""):
             upper_key = upper_key.upper()
             print("Genre {} contains {} albums in database.".format(upper_key,val))
             print("-----------------------------------------------------------")
-    return '***'        
+    return ""        
 
 readList()        
 
