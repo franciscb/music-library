@@ -1,3 +1,4 @@
 .vscode/*
 musiclib/*
 *.mp3
+__pycache__/

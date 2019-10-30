@@ -37,8 +37,7 @@ def readList():
         
         else:
             artistsDict[musicDB[item][0]] = list((musicDB[item][1], musicDB[item][2], musicDB[item][3], musicDB[item][4]))
-
-    print(artistsDict)  
+ 
     print('\n')   
 
     print(sort(artistsDict,"albumC"))  
