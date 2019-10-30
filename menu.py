@@ -1,32 +1,31 @@
 import tkinter as tkt
 #from play_internet import *
 
+import subprocess 
+
 
 import vlc
 
 screen = tkt.Tk()
 
-p = vlc.MediaPlayer("http://192.168.0.88/Atreyu_Becoming,The,Bull_2007.mp3")
-
-def stats_n():
-    import stats
-    del(stats)
+audio = vlc.MediaPlayer("http://192.168.0.88/Atreyu_Becoming,The,Bull_2007.mp3")
 
 def play_test():
-    
-   
-    
-    if p.is_playing() == False:
-        p.play()
+  if audio.is_playing() == False:
+    audio.play()
 
 
 def stop_test():
+  if audio.is_playing() == True:
+    audio.pause()
 
-    if p.is_playing() == True:
-        p.pause()
+
+def stats_n():
+    subprocess.call(['python3', 'stats.py'])
+
 
 screen.geometry("500x500")
-screen.title("Music Shitzu Beach")
+screen.title("Music Shitzu Beaches")
 screen.resizable(False, False)
 
 
