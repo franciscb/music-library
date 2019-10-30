@@ -1,4 +1,4 @@
-
+import subprocess
 def age_to_int(num):
     return int(num)
 
@@ -46,7 +46,7 @@ def readList():
     print (sort(artistsDict, "ageY"))
     print(sort(artistsDict, "albumL"))
     print(sort(artistsDict, "albumS"))
-
+    subprocess.run(['gedit', 'README.md']) 
 
 def sort(lst,parameter=""):
 
