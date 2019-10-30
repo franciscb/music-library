@@ -183,6 +183,5 @@ def sort(lst,parameter=""):
             print("Genre {} contains {} albums in database.".format(upper_key,val))
             print("-----------------------------------------------------------")
     return ""        
-print(int("00"))
 readList()        
 
