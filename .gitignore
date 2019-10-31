@@ -3,3 +3,6 @@ musiclib/*
 *.mp3
 __pycache__/
 test.py
+text_albums_data.txt
+build/*
+dist/*

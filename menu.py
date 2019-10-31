@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import tkinter as tkt
 #from play_internet import *
 import subprocess 
@@ -14,10 +15,10 @@ def win_init():
             
             try:
                 server = req.get("http://192.168.0.88")
-                audio.play()
-                print(server)
                 playNet["state"] = "disabled"
                 playNet2["state"] = "normal"
+                audio.play()
+                print(server)
                     
             except req.ConnectionError:
                 
@@ -25,15 +26,13 @@ def win_init():
                 print("Stuff aint working man!") 
 
     def go_places():
-        subprocess.call(['python3', 'new_s.py'])
+        subprocess.call(['python3', 'import_to_db.py'])
 
     def connection_error():
-        playNet["state"] = "disabled"
-        playNet2["state"] = "disabled"
-        stats["state"] = "disabled"
-        stats1["state"] = "disabled"
         tm.sleep(1)
-        subprocess.run(['python3', 'err_connect.py'], )
+        screen.withdraw()
+        subprocess.call(['python3', 'err_connect.py'],)
+        screen.deiconify()
         #reopen_buttons()
         
     def stop_test():
@@ -52,7 +51,9 @@ def win_init():
         stats["state"] = "disabled"
         stats1["state"] = "disabled"
         tm.sleep(1)
+        screen.withdraw()
         subprocess.call(['python3', 'stats.py'])
+        screen.deiconify()
         
 
 
@@ -84,7 +85,7 @@ def win_init():
     title = tkt.Label(screen, text ="Main Menu", bg ='#1e2021', fg = "white", font =("verdana",18))
     title.pack(fill = "both")
 
-    playNet = tkt.Button(screen, width = 16 , text = "Play Local", bg = '#1e2021', fg = 'white', relief = "raised"  ,font =("verdana",10), command =lambda:[play_test(),reopen_buttons()])
+    playNet = tkt.Button(screen, width = 16 , text = "Play Local", bg = '#1e2021', fg = 'white', relief = "raised"  ,font =("verdana",10), command = play_test)
 
     playNet.place(x = 170, y = 150)
 
@@ -104,6 +105,5 @@ def win_init():
     stats1.place(x = 170, y = 290)
 
     screen.mainloop()
-    reopen_buttons()
 
 win_init()   

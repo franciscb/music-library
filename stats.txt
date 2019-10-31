@@ -2,11 +2,13 @@
 
 ---DO NOT EDIT---
 
-Number of albums:12
+Number of albums:15
 --------------
 Album by genre
 --------------
-Genre PROGRESSIVE ROCK contains 3 albums in database.
+Genre PROGRESSIVE ROCK contains 2 albums in database.
+-----------------------------------------------------------
+Genre PROGRESSIVE contains 1 albums in database.
 -----------------------------------------------------------
 Genre POP contains 3 albums in database.
 -----------------------------------------------------------
@@ -17,6 +19,12 @@ Genre HARD ROCK contains 2 albums in database.
 Genre ANCIENT contains 1 albums in database.
 -----------------------------------------------------------
 Genre HIP HOP contains 1 albums in database.
+-----------------------------------------------------------
+Genre TEST contains 1 albums in database.
+-----------------------------------------------------------
+Genre HJKHK contains 1 albums in database.
+-----------------------------------------------------------
+Genre J;LK;KL contains 1 albums in database.
 -----------------------------------------------------------
 
 Oldest album(s):
@@ -34,4 +42,4 @@ rock by rock at 13:37.
 
 
 
-Log File Generated at:2019-10-31 10:15:51.695145
+Log File Generated at:2019-10-31 16:22:34.027329
