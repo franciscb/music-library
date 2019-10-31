@@ -1,4 +1,5 @@
 import subprocess
+from datetime import datetime
 def age_to_int(num):
     return int(num)
 
@@ -46,7 +47,9 @@ def readList():
     print (sort(artistsDict, "ageY"))
     print(sort(artistsDict, "albumL"))
     print(sort(artistsDict, "albumS"))
-    subprocess.run(['gedit', 'README.md']) 
+    with open("stats.txt", 'a') as fill:
+        fill.writelines(2*'\n' + '\n' + "Log File Generated at:" + str(datetime.now()))
+    subprocess.run(['gedit', 'stats.txt']) 
 
 def sort(lst,parameter=""):
 
@@ -69,11 +72,17 @@ def sort(lst,parameter=""):
             i = 1 
         year = str(year)
         i = 1
+
         print("Oldest album(s):")
+        with open("stats.txt", 'a') as fill:
+            fill.writelines('\n' + "Oldest album(s):" + '\n')
         for key in lst.keys():
             while i < len(lst[key]):
                 if lst[key][i] == year:
                     print("{} by {} released in {}.".format(lst[key][i-1], key, year))
+                    str_to_write = ("{} by {} released in {}.".format(lst[key][i-1], key, year))
+                    with open("stats.txt", 'a') as fill:
+                        fill.writelines(str_to_write + '\n' )
                 i += 4 
             i = 1        
         return ""            
@@ -93,13 +102,20 @@ def sort(lst,parameter=""):
         year = str(year)
         i = 1
         print("Newest album(s):")
+        with open("stats.txt", 'a') as fill:
+            fill.writelines('\n' + "Newest album(s):" + '\n')
         for key in lst.keys():
             while i < len(lst[key]):
                 if lst[key][i] == year:
                     print("{} by {} released in {}.".format(lst[key][i-1], key, year))
+                    str_to_write = ("{} by {} released in {}.".format(lst[key][i-1], key, year))
+                    with open("stats.txt", 'a') as fill:
+                        fill.writelines(str_to_write + '\n' )
                 i += 4 
             i = 1        
         return ""            
+
+
 
 
     if parameter == "albumL":
@@ -117,10 +133,16 @@ def sort(lst,parameter=""):
             i = 3 
         i=3    
         print("Longest album(s):")
+        with open("stats.txt", 'a') as fill:
+            fill.writelines('\n' + "Longest album(s):" + '\n')
         for key in lst.keys():
             while i < len(lst[key]):
                 if lst[key][i] == time_str:
                     print("{} by {} at {}.".format(lst[key][i-3], key, time_str))
+                    str_to_write = "{} by {} at {}.".format(lst[key][i-3], key, time_str)
+                    with open("stats.txt", 'a') as fill:
+                        fill.writelines(str_to_write + '\n' )
+
                 i += 4 
             i = 3        
         return ""           
@@ -142,11 +164,16 @@ def sort(lst,parameter=""):
             i = 3 
         i=3    
         print("Shortest album(s):")
+        with open("stats.txt", 'a') as fill:
+            fill.writelines('\n' + "Shortest album(s):" + '\n')
         for key in lst.keys():
             while i < len(lst[key]):
                 if lst[key][i] == time_str:
                     print("{} by {} at {}.".format(lst[key][i-3], key, time_str))
-                i += 4 
+                    str_to_write = "{} by {} at {}.".format(lst[key][i-3], key, time_str)
+                    with open ("stats.txt", 'a') as fill:
+                        fill.writelines(str_to_write + '\n')
+                i += 4  
             i = 3        
         return ""    
 
@@ -160,7 +187,9 @@ def sort(lst,parameter=""):
                 dbTotal += 1
                 i += 4
             i = 0 
-
+        with open("stats.txt", 'w') as fill:
+            fill.write("---LOG FILE---" + '\n'+ '\n' + "---DO NOT EDIT---" + '\n' + '\n')
+            fill.writelines("Number of albums:" + str(dbTotal) + '\n')
         return dbTotal
     
     if parameter == "albumG":
@@ -177,11 +206,18 @@ def sort(lst,parameter=""):
         print('\n' + "--------------")        
         print("Album by genre")
         print("--------------" + '\n')
+        with open("stats.txt", 'a') as fill:
+            fill.writelines("--------------" + '\n' + "Album by genre" + '\n' + '--------------' + '\n')
+
         for key, val in genre_album.items():
             upper_key = str(key)
             upper_key = upper_key.upper()
             print("Genre {} contains {} albums in database.".format(upper_key,val))
+            str_to_write = "Genre {} contains {} albums in database.".format(upper_key,val)
             print("-----------------------------------------------------------")
+            with open("stats.txt", 'a') as fill:
+                fill.writelines(str_to_write + '\n' + '-----------------------------------------------------------' +'\n')
+    
     return ""        
 readList()        
 
