@@ -1,0 +1,10 @@
+http://localhost/metalcore/Atreyu_Becoming,The,Bull_2007.mp3
+http://localhost/metalcore/Asking,Alexandria_The,Final,Eisode_2009.mp3
+http://localhost/metalcore/Blessthefall_Guys,Like,You,Make,Us,Look,Bad_2007.mp3
+http://localhost/metalcore/Bring,Me,The,Horizon_Chelsea,Smile_2008.mp3
+http://localhost/metalcore/Bullet,For,My,Valentine_Hand,Of,Blood_2005.mp3
+http://localhost/metalcore/Hopes,Die,Last_Unleash,Hell_2011.mp3
+http://localhost/metalcore/Memphis,May,FIre_The,Sinner_2011.mp3
+http://localhost/metalcore/Motionless,In,White_Abigail_2010.mp3
+http://localhost/metalcore/Periphery_Icarus,Lives!_2010.mp3
+http://localhost/metalcore/We,Came,As,Romans_To,Move,On,Is,To,Grow_2009.mp3

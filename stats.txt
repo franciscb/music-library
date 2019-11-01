@@ -2,7 +2,7 @@
 
 ---DO NOT EDIT---
 
-Number of albums:15
+Number of albums:12
 --------------
 Album by genre
 --------------
@@ -20,12 +20,6 @@ Genre ANCIENT contains 1 albums in database.
 -----------------------------------------------------------
 Genre HIP HOP contains 1 albums in database.
 -----------------------------------------------------------
-Genre TEST contains 1 albums in database.
------------------------------------------------------------
-Genre HJKHK contains 1 albums in database.
------------------------------------------------------------
-Genre J;LK;KL contains 1 albums in database.
------------------------------------------------------------
 
 Oldest album(s):
 Old Time by Old Timers released in 966.
@@ -42,4 +36,4 @@ rock by rock at 13:37.
 
 
 
-Log File Generated at:2019-10-31 16:22:34.027329
+Log File Generated at:2019-11-01 10:34:53.450196

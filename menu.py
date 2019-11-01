@@ -9,24 +9,21 @@ import requests as req
 def win_init():
     screen = tkt.Tk()
 
-    audio = vlc.MediaPlayer("http://192.168.0.88/Atreyu_Becoming,The,Bull_2007.mp3")    #192.168.0.88
-    def play_test():
-        if audio.is_playing() == False:
-            
-            try:
-                server = req.get("http://192.168.0.88")
-                playNet["state"] = "disabled"
-                playNet2["state"] = "normal"
-                audio.play()
-                print(server)
-                    
-            except req.ConnectionError:
-                
-                connection_error()
-                print("Stuff aint working man!") 
+    audio = vlc.MediaPlayer("http://localhost/Atreyu_Becoming,The,Bull_2007.mp3")    #192.168.0.88
 
     def go_places():
         subprocess.call(['python3', 'import_to_db.py'])
+
+
+    def go_to_radio():
+        try:
+            server = req.get("http://localhost")
+            screen.destroy()
+            subprocess.call(['python3', 'radio_menu.py'])
+            print(server) 
+        except req.ConnectionError:
+            connection_error()
+            print("Stuff aint working man!")      
 
     def connection_error():
         tm.sleep(1)
@@ -46,10 +43,6 @@ def win_init():
         screen.destroy()
 
     def stats_n():
-        playNet["state"] = "disabled"
-        playNet2["state"] = "disabled"
-        stats["state"] = "disabled"
-        stats1["state"] = "disabled"
         tm.sleep(1)
         screen.withdraw()
         subprocess.call(['python3', 'stats.py'])
@@ -71,7 +64,10 @@ def win_init():
             playNet2["state"] = "disabled"
 
 
-
+    def call_alpha():
+        screen.withdraw()
+        subprocess.call(['python3', 'alpha_b.py'])
+        screen.deiconify()
 
 
 
@@ -85,11 +81,11 @@ def win_init():
     title = tkt.Label(screen, text ="Main Menu", bg ='#1e2021', fg = "white", font =("verdana",18))
     title.pack(fill = "both")
 
-    playNet = tkt.Button(screen, width = 16 , text = "Play Local", bg = '#1e2021', fg = 'white', relief = "raised"  ,font =("verdana",10), command = play_test)
+    playNet = tkt.Button(screen, width = 16 , text = "Display Local DB", bg = '#1e2021', fg = 'white', relief = "raised"  ,font =("verdana",10), command = call_alpha )
 
     playNet.place(x = 170, y = 150)
 
-    playNet2 = tkt.Button(screen, width = 16 ,text = "Internet Radio ", bg = '#1e2021', fg = 'white',state = "disabled",  relief = "raised"  ,font =("verdana",10), command = stop_test)
+    playNet2 = tkt.Button(screen, width = 16 ,text = "Internet Radio ", bg = '#1e2021', fg = 'white',state = "normal",  relief = "raised"  ,font =("verdana",10), command = go_to_radio)
     playNet2.place(x = 170, y = 180)
 
 
@@ -97,7 +93,7 @@ def win_init():
 
 
 
-    stats = tkt.Button(screen, width = 16 ,text = "Database Stats", bg = '#1e2021', fg = 'white', relief = "raised", font =("verdana",10), command = lambda:[stats_n(),reopen_buttons()])
+    stats = tkt.Button(screen, width = 16 ,text = "Database Stats", bg = '#1e2021', fg = 'white', relief = "raised", font =("verdana",10), command = stats_n)
     stats.place(x = 170, y = 250)
 
 

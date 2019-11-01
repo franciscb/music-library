@@ -21,7 +21,7 @@ def win_init():
     err_disp.pack(fill = "both")
 
 
-    k_but = tkt.Button(screen, text = "This Sucks!", bg = "gray", fg = "white", font = ("verdana", 8), command = kill_wind)
+    k_but = tkt.Button(screen, text = "OK", bg = "gray", fg = "white", font = ("verdana", 8), command = kill_wind)
     k_but.pack()
     screen.mainloop()
 
